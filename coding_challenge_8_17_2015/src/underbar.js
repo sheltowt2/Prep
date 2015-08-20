@@ -15,13 +15,13 @@ var _ = {};
    * the members, it also maintains an array of results.
    */
   _.map = function(array, iterator) {
-      
+
   };
 
   // Return all elements of an array that pass a truth test.
-_.filter = function(obj, evaluator) {
+  _.filter = function(obj, evaluator) {
 
-}
+  }
 
 
 
@@ -42,9 +42,9 @@ _.filter = function(obj, evaluator) {
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
 
-_.any = function(obj, iterator) {
+  _.any = function(obj, iterator) {
 
-};
+  };
 
 
 

@@ -79,10 +79,6 @@ describe("every", function() {
   var getValue = function(i) { return i; };
   var isEven = function(num) { return num % 2 === 0; };
 
-  it("should handle an empty set", function() {
-    expect(_.every([], getValue) ).to.equal(true);
-  });
-
   it("should handle a set that contains only true values", function() {
     expect(_.every([true, true, true], getValue)).to.equal(true);
   });
@@ -134,19 +130,11 @@ describe("any", function() {
   });
 
   it("should handle a set containing 'false' values", function() {
-    expect(_.any([false, false, false])).to.equal(false);
+    expect(_.any([3, 3, 3], isEven)).to.equal(false);
   });
 
   it("should handle a set containing one 'true' value", function() {
     expect(_.any([false, false, true])).to.equal(true);
-  });
-
-  it("should handle a set containing a string", function() {
-    expect(_.any([null, 0, 'yes', false])).to.equal(true);
-  });
-
-  it("should handle a set that contains falsy values", function() {
-    expect(_.any([null, 0, '', false])).to.equal(false);
   });
 
   it("should handle a set that contains all odd numbers", function() {
@@ -155,10 +143,6 @@ describe("any", function() {
 
   it("should handle a set that contains an even number", function() {
     expect(_.any([1, 10, 29], isEven)).to.equal(true);
-  });
-
-  it("should handle casting to boolean - true", function() {
-    expect(_.any([1], passThrough)).to.equal(true);
   });
 
   it("should handle casting to boolean - false", function() {
