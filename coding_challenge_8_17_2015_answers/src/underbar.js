@@ -79,17 +79,17 @@ _.filter = function(obj, evaluator) {
 
   // Determine whether all of the elements match a truth test.
   _.every = function(obj, iterator) {
-    var count = true;
+    var everyTrue = true;
     _.each(obj, function(value, index, obj) {
       var t = iterator(value);
       if(t == false){
-        count = false;
+        everyTrue = false;
       }if(t == undefined){
-        count = false;
+        everyTrue = false;
       }
     });
 
-    return count;
+    return everyTrue;
     
   };
 
