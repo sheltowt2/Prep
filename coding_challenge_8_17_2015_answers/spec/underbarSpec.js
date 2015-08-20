@@ -17,20 +17,6 @@ describe("each", function() {
       ['c', 2, letters]
     ]);
   });
-
-  it("should print each value in object to console", function() {
-    var stuff = {name: "bob", city: "boston"};    
-
-    _.each(stuff, function(value, index, collection) {
-      console.log(value);
-    });
-    /*
-    expect(iterations).to.eql([
-      "bob"
-      "boston"
-    ]);
-*/
-  });
 });
 
 
@@ -150,18 +136,5 @@ describe("any", function() {
   });
 });
 
-describe("intersection", function() {
-  it("should take the set intersection of two arrays", function() {
-    var stooges = ['moe', 'curly', 'larry'];
-    var leaders = ['moe', 'groucho'];
-    expect(_.intersection(stooges, leaders)).to.eql(['moe']);
-  });
-
-  it("should work on an arguments object", function() {
-    var args = returnArguments('moe', 'curly', 'larry');
-    var leaders = ['moe', 'groucho'];
-    expect(_.intersection(args, leaders)).to.eql(['moe']);
-  });
-});
 
 // */

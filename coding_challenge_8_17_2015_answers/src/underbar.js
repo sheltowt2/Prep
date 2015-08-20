@@ -37,13 +37,10 @@ var _ = {};
   // Return all elements of an array that pass a truth test.
 _.filter = function(obj, evaluator) {
   var resultArray = [];
-  // 2. use _.each to loop throught the array and run the evaluator on each one
   _.each(obj, function(value, index, obj) {
     if (evaluator(value)) {
       resultArray.push(value);
     }
-    // 3. if the eavaluator returns true, i want to push the value at that index into the resultArray
-      // if it's false, nothing
   });
   return resultArray;
 }
@@ -107,22 +104,11 @@ _.any = function(obj, iterator) {
   }
   var result1 = _.map(obj, iterator)
   var result2 = _.contains(result1, true)
-  console.log(result2)
   if (result2 >= 1) {
     return true
   } else {
     return false
   }
 };
-
-
-
-  // Produce an array that contains every item shared between all the
-  // passed-in arrays.
-  _.intersection = function(array) {
-    //for each element in one array
-    //contains element in another array
-    // if true add to another array
-  };
 
 }).call(this);
