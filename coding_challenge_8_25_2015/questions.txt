@@ -9,4 +9,5 @@ Common Underscore Functions
 4.  any
 5.  every
 6.  contains
-7.  
+7.  shuffle
+8.  
