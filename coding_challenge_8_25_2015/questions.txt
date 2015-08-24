@@ -1,0 +1,12 @@
+1.  Intersection -> produce an array that contains every item shared between all of the passed in arrays
+2.  Difference -> take the difference between one array and a number of the other arrays 
+3.  Reject -> the opposite of filter
+
+Common Underscore Functions
+1.  each
+2.  map
+3.  reduce
+4.  any
+5.  every
+6.  contains
+7.  
