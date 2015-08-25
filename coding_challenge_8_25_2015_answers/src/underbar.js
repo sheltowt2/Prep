@@ -97,12 +97,14 @@ var _ = {};
 
   //every item shared between all passed in arrays
   _.intersection = function(array) {
-    flatArray = _.flatten(array)
+
   }
 
   //take the difference between one array and a number of other arrays
   _.difference = function(array) {
-
+    var flatArray = _.flatten(arguments)
+    var uniqueValues = _.uniq(flatArray)
+    return uniqueValues
   }
 
 
