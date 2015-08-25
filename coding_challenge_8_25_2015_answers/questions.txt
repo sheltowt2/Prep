@@ -1,0 +1,38 @@
+Common Underscore Functions
+1.  each
+Iterates over a list of elements, yeilding each in turn to an iteratee function.  The iteratee is bound to the context object, if one is passed.
+
+2.  map
+Produces a new array of values by mapping each value in list through a transformation function (iteratee).
+
+3.  reduce
+AKA inject and foldl, reduce boils down a list of values into a single value. 
+
+4.  any
+Returns true if any of the values in the list pass the predicate truth test
+
+5.  every
+Returns true if all values in the list pass the truth test
+
+6.  contains
+Returns true if the value is present in the list
+
+7.  shuffle
+Returns a shuffled copy of the list
+
+8.  reject
+Returns the values in list without the elements that the truth test passes, opposite of filter
+
+9.  filter
+Returns the values of a list that pass a truth test
+
+10.  intersection
+produce an array that contains every item shared between all of the passed in arrays
+
+11.  difference
+take the difference between one array and a number of the other arrays
+
+12.  flatten
+flattens a multi dimensional array into a one dimensional array that contains all of the elements of the multi dimensional array
+
+//http://underscorejs.org/underscore.js
