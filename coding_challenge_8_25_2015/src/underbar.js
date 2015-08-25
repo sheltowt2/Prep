@@ -42,77 +42,51 @@ var _ = {};
     return resultArray;
   };
 
-
-  //write resuing each
-  // Return all elements of an array that pass a truth test.
-  _.filter = function(obj, evaluator) {
-    // 1. declare variable for the output array
-    var resultArray = [];
-    // 2. use each to pass each value into the evaluator
-      // a. if the evaluator returns true, add that value to the new results array
-      // b. if it doesn't, do nothing
-    _.each(obj, function(value, index, obj) {
-      if (evaluator(value)) {
-        resultArray.push(value);
+  //using each
+  _.indexOf = function(array, target) {
+    _.each(array, function(value, index, array){
+      if (value === target) {
+        return index
       }
-    });
-    // 3. return the resulting new array
-    return resultArray;
+    })
+  }
+
+  //produce a duplicate free version of the array
+  _.unique = function()
+
+  //using indexOf
+  _.contains = function(obj, truthTest) {
+
+  }
+
+  //using recursion
+  //The concat() method returns a new array comprised of the array on which it is called joined with the array(s) and/or value(s) provided as arguments.
+  _.flatten = function(array) {
+    var retturnArray = [];
+    for(var i = 0; i < array.length; i++) {
+        if(Array.isArray(array[i])) {
+            ret = ret.concat(_.flatten(array[i]));
+        } else {
+            ret.push(array[i]);
+        }
+    }
+    return ret;
+  }
+
+  //every item shared between all passed in arrays
+  _.intersection = function(array) {
+
+  }
+
+  //take the difference between one array and a number of other arrays
+  _.difference = function(array) {
+
   }
 
 
-  //write resusing map, and filter
-  // Determine if the array or object contains a given value (using `===`).
-  _.contains = function(obj, testValue) {
-    
-    // 1. call map 
-      // resutling array will be true/false for each value (did it equal the testValue)
-      // [false, false, true, false]
-      var isEqual = function(value) {
-        return (value === testValue);        
-      };
-
-    var arrayPostMap = _.map(obj, isEqual);
-
-    // 2. call filter using the new array and an evaluator (is true in here?)
-      //  [true]
-      // if length of new array is grater than 0, voila
-    var evaluate = function(value) {
-      if (value === true) {
-        return true;
-      }
-    };  
-
-    var arrayPostFilter = _.filter(arrayPostMap, evaluate);
-    if (arrayPostFilter.length > 0) {
-      return true;
-    }  else {return false;}  
-    
-    // return ((_.filter(arrayPostMap, evaluate)).length > 0);
-  };
 
 
-  //write resuing each
-  // Determine whether all of the elements match a truth test.
-  _.every = function(obj, iterator) {
-    var newArray = []
-    _.each(obj, function(value, index, obj){      
-      if (iterator(value)) {
-        newArray.push(value);
-      }           
-    });
-    return (newArray.length == obj.length);
-  };
 
-  // Determine whether any of the elements pass a truth test. If no iterator is
-  // provided, provide a default one
-  //write using map and contains
-  _.any = function(obj, iterator) {
-    
-    var array2 = _.map(obj, iterator);
-    // [false, false, false]
 
-    return _.contains(array2, true);
-  };
 
 }).call(this);
