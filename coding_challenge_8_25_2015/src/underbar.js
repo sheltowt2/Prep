@@ -6,15 +6,11 @@ var _ = {};
   // Call iterator(value, key, collection) for each element of collection
   //support either an object or an array
   _.each = function(obj, iterator) {
-    // 1. see what type of object it is
-    // 2. do the if statement for if it's an array
     if (Array.isArray(obj)) {
-      for (var i = 0, l = obj.length; i < l; i++){
+      for (var i = 0, l = obj.length; i < l; i++) {
         iterator(obj[i], i, obj);
       }
-    }
-    // 3. else statement will handle object
-    else {
+    } else if (typeof(obj) === 'object') {
       for (var prop in obj) {
         iterator(obj[prop], prop, obj);
       }
@@ -29,59 +25,124 @@ var _ = {};
    */
    //write reusing each
   _.map = function(array, iterator) {
-    // 1. make a variable for the output []
-    var resultArray = [];
-    // 2. use each and pass in array and iterator 
+    var resultsArray = [];
     _.each(array, function(value, index, array) {
-      if (Array.isArray(array)) {
-        resultArray[index] = iterator(value);
-      }
-      else { resultArray.push(iterator(value)); }
+      resultsArray[index] = iterator(value);
     });
-    // 3. return the resulting array
-    return resultArray;
+    return resultsArray;
   };
 
   //using each
   _.indexOf = function(array, target) {
-    _.each(array, function(value, index, array){
-      if (value === target) {
-        return index
-      }
-    })
+
+    // [2, 4, 5, 2]
+    var result = -1;
+    var targetChecker = function(value, index, array) {
+      if (result === -1) {
+        if (value === target) {      
+        result = index;
+        return result;
+        }
+      }      
+    };
+    _.each(array, targetChecker);
+    return parseInt(result);
   }
 
-  //produce a duplicate free version of the array
-  _.unique = function()
+
 
   //using indexOf
-  _.contains = function(obj, truthTest) {
+  _.contains = function(obj, target) {
+    // 1: initiate variable for the return boolean as false
+    var result = false;
+    // 2: call indexOf passing in the obj and the target value  
+      // if result of indexOf is greater than -1, you know it's in there
+    var value =  _.indexOf(obj, target);
+    if (value > -1)  {
+      result = true;
+    }
+    // last: return boolean for whter you found it
+    return result;
+  };
 
+  //produce a duplicate free version of the array
+  //use contains
+
+  _.uniq = function(list) {
+    // 1: initiate new array variable
+    var resultsArray = [];
+    // 
+      // each tiem throguh, check if it already exists in the new aray, if it does, don't psush it to new array
+    _.each(list, function(value, index, list) {
+      if (!_.contains(resultsArray, value)) {
+        resultsArray.push(value);
+      }
+    });
+    // last: return new array
+    return resultsArray;
   }
 
   //using recursion
   //The concat() method returns a new array comprised of the array on which it is called joined with the array(s) and/or value(s) provided as arguments.
   _.flatten = function(array) {
-    var retturnArray = [];
-    for(var i = 0; i < array.length; i++) {
-        if(Array.isArray(array[i])) {
-            ret = ret.concat(_.flatten(array[i]));
-        } else {
-            ret.push(array[i]);
-        }
-    }
-    return ret;
-  }
+    var newArray = [];
+    
+    for (var i = 0; i < array.length; i++) {
+      if (Array.isArray(array[i])) {
+        newArray = newArray.concat(_.flatten(array[i]));
+      } else {
+        newArray.push(array[i]);
+      }
+    } 
+    return newArray;
+  };
+
+  //assumption, there are no duplicates within any of the arrays
 
   //every item shared between all passed in arrays
-  _.intersection = function(array) {
+  _.intersection = function(arrays) {
+    // 1. initate my variabnle, items shared
+    var arrayDupes = [];
+    var doubles = [];
 
-  }
+    // 2. flatten the arguments
+    var flat  = _.flatten(arguments);
+    // 3: pass each one into the intersection array 
+    // flat = ['moe', 'curly', 'larry', 'moe', 'groucho'];
+    _.each(flat, function(value, index, flat) {
+      if (_.contains(arrayDupes, value)) {
+        doubles.push(value);
+      } else {
+        arrayDupes.push(value);
+      }
+    });
+    // last: return itesm sharedd
+    return doubles;
+  };
 
   //take the difference between one array and a number of other arrays
-  _.difference = function(array) {
+  _.difference = function(arrays) {
+    var arrayDupes = [];
+    var singles = [];
 
-  }
+    // 2. flatten the arguments
+    var flat  = _.flatten(arguments);
+    // 3: pass each one into the intersection array 
+    // flat = ['moe', 'curly', 'larry', 'moe', 'groucho'];
+    // [1,2,3 , 2,30,40]
+    _.each(flat, function(value, index, flat) {
+      if (!_.contains(arrayDupes, value)) {
+        singles.push(value);
+        arrayDupes.push(value);
+      } else {
+        arrayDupes.push(value);
+      }
+    });
+    // last: return itesm sharedd
+    return singles;
+    // [1, 3];
+  };
+  
 
 
 

@@ -97,13 +97,35 @@ var _ = {};
 
   //every item shared between all passed in arrays
   _.intersection = function(array) {
+    var flattened = _.flatten(arguments)
+    // var flattened2 = flattened
+
+    var returnArray  = []
+
+    for (var i = 0; i < flattened.length; i++){
+      for (var x = 0; x < flattened.length; x++){
+        if (x > i) {
+          console.log(flattened[i], flattened[x])
+          if (flattened[i] == flattened[x]){
+            returnArray.push(flattened[i])
+          }          
+        }
+      }
+    }
+
+    return returnArray
 
   }
 
   //take the difference between one array and a number of other arrays
+  //remove from flat array
+  //see if flat array contains it
   _.difference = function(array) {
     var flatArray = _.flatten(arguments)
     var uniqueValues = _.uniq(flatArray)
+    for (value in flatArray) {
+      
+    }
     return uniqueValues
   }
 
