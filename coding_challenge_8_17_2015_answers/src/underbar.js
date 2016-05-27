@@ -4,15 +4,15 @@ var _ = {};
 
 
   // Call iterator(value, key, collection) for each element of collection
-  _.each = function(obj, iterator) {
+  _.each = function(obj, callback) {
   if (Array.isArray(obj)) {
     for(var i = 0; i < obj.length; i++){
-    iterator.call(context, obj[i], i, obj);
+      callback(obj[i], i, obj);
     };
   } else {
     var prop
     for (prop in obj) {
-      iterator.call(context, obj[prop], prop, obj);
+      callback(obj[i], i, obj);
     }
   } 
   };
