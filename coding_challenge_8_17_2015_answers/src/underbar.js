@@ -7,15 +7,15 @@ var _ = {};
   _.each = function(obj, callback) {
   if (Array.isArray(obj)) {
     for(var i = 0; i < obj.length; i++){
-      callback(obj[i], i, obj);
+      callback(obj[i]);
     };
   } else {
     var prop
     for (prop in obj) {
-      callback(obj[i], i, obj);
+      callback(obj[i]);
     }
   } 
-  };
+};
 
 
   /*
@@ -26,18 +26,18 @@ var _ = {};
   _.map = function(array, iterator) {
       var returnArray = new Array();
 
-      _.each(array, function(value, index, array) {
+      _.each(array, function(value) {
         var transformed = iterator(value);
-        returnArray.push(transformed)
+        returnArray.push(transformed);
       });
 
-      return returnArray
+      return returnArray;
   };
 
   // Return all elements of an array that pass a truth test.
 _.filter = function(obj, evaluator) {
   var resultArray = [];
-  _.each(obj, function(value, index, obj) {
+  _.each(obj, function(value) {
     if (evaluator(value)) {
       resultArray.push(value);
     }
@@ -46,41 +46,10 @@ _.filter = function(obj, evaluator) {
 }
 
 
-
-
-
-
-  // Determine if the array or object contains a given value (using `===`).
-  _.contains = function(obj, testValue) {
-    var evaluator = function(value, checkvalue) {
-      if (value === testValue) {
-        return value
-      } else {
-        return null
-      }
-    }
-    var result1 = _.map(obj, evaluator)
-
-    var notnull = function(value) {
-      if (value === null) {
-        return false
-      } else {
-        return true
-      }
-    }
-    var result = _.filter(result1, notnull)
-
-    if (result.length >= 1) {
-      return true
-    } else {
-      return false
-    }
-  };
-
   // Determine whether all of the elements match a truth test.
   _.every = function(obj, iterator) {
     var everyTrue = true;
-    _.each(obj, function(value, index, obj) {
+    _.each(obj, function(value) {
       var t = iterator(value);
       if(t == false){
         everyTrue = false;
@@ -96,19 +65,5 @@ _.filter = function(obj, evaluator) {
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
 
-_.any = function(obj, iterator) {
-  if (!iterator){
-    iterator = function(i){
-      return i
-    }
-  }
-  var result1 = _.map(obj, iterator)
-  var result2 = _.contains(result1, true)
-  if (result2 >= 1) {
-    return true
-  } else {
-    return false
-  }
-};
 
 }).call(this);

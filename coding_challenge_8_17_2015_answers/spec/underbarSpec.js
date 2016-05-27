@@ -7,23 +7,19 @@ describe("each", function() {
     var letters = ['a', 'b', 'c'];
     var iterations = [];
 
-    _.each(letters, function(letter, index, collection) {
-      iterations.push([letter, index, collection]);
+    _.each(letters, function(letter) {
+      iterations.push([letter]);
     });
 
-    expect(iterations).to.eql([
-      ['a', 0, letters],
-      ['b', 1, letters],
-      ['c', 2, letters]
-    ]);
+    expect(iterations).to.eql(["a", "b", "c"]);
   });
 });
 
 
 describe("map", function() {
   it("should apply a function to every value in an array", function() {
-    var doubled = _.map([1, 2, 3], function(num) { return num * 2; });
-    expect(doubled).to.eql([2, 4, 6]);
+    var doubled = _.map([1, 2, 3], function(num) { return num * 3; });
+    expect(doubled).to.eql([3, 6, 9]);
   });
 });
 
@@ -43,19 +39,6 @@ describe("filter", function() {
     };
     var odds = _.filter([1, 2, 3, 4, 5, 6], isOdd);
     expect(odds).to.eql([1, 3, 5]);
-  });
-});
-
-
-
-describe("contains", function() {
-  it("should return true if a collection contains a user-specified value", function() {
-    expect(_.contains([1,2,3], 2)).to.equal(true);
-    expect(_.contains({moe:1, larry:3, curly:9}, 3)).to.equal(true);
-  });
-
-  it("should return false if a collection does not contain a user-specified value", function() {
-    expect(_.contains([1,3,9], 2)).to.equal(false);
   });
 });
 
@@ -94,47 +77,6 @@ describe("every", function() {
   });
 });
 
-
-describe("any", function() {
-  var nativeSome = Array.prototype.some;
-  var isEven = function(number){
-    return number % 2 === 0;
-  };
-  var passThrough = function(firstArgument){
-    return firstArgument;
-  };
-
-  beforeEach(function() {
-    Array.prototype.some = null;
-  });
-  afterEach(function() {
-    Array.prototype.some = nativeSome;
-  });
-
-  it("should handle the empty set", function() {
-    expect(_.any([])).to.equal(false);
-  });
-
-  it("should handle a set containing 'false' values", function() {
-    expect(_.any([3, 3, 3], isEven)).to.equal(false);
-  });
-
-  it("should handle a set containing one 'true' value", function() {
-    expect(_.any([false, false, true])).to.equal(true);
-  });
-
-  it("should handle a set that contains all odd numbers", function() {
-    expect(_.any([1, 11, 29], isEven)).to.equal(false);
-  });
-
-  it("should handle a set that contains an even number", function() {
-    expect(_.any([1, 10, 29], isEven)).to.equal(true);
-  });
-
-  it("should handle casting to boolean - false", function() {
-    expect(_.any([0], passThrough)).to.equal(false);
-  });
-});
 
 
 // */
